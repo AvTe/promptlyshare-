@@ -1,4 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Promptopia
+
+### Discover & Share AI-Powered Prompts
+
+Promptopia is an open-source AI prompting tool for the modern world, where users can discover, create, and share creative AI prompts. Built with **React**, **Next.js**, and **MongoDB**, Promptopia empowers users to explore a wide range of AI-generated content and share their own ideas with the community.
+
+[Live Demo](https://promptlyshare.vercel.app)
+
+---
+
+## Features
+
+- 🌟 **Discover Prompts**: Browse through a vast collection of AI-generated prompts.
+- ✍️ **Create Prompts**: Easily create your own prompts and contribute to the growing library.
+- 🗣️ **Share Prompts**: Share creative prompts with the community, and get inspired by others.
+- 🔐 **Google Authentication**: Securely sign in with your Google account to create and manage your prompts.
+- 💾 **Data Storage**: Prompts are stored in MongoDB, ensuring reliability and scalability.
+
+## Tech Stack
+
+- **Frontend**: React, Next.js
+- **Backend**: Next.js API routes
+- **Database**: MongoDB
+- **Authentication**: Google Login using NextAuth.js
+- **Styling**: Tailwind CSS
+- **Deployment**: Vercel
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or later)
+- MongoDB (local or cloud database, e.g., MongoDB Atlas)
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone [https://github.com/yourusername/promptopia.git](https://github.com/AvTe/promptlyshare-)
+
 
 ## Getting Started
 
