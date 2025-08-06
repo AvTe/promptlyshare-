@@ -1,14 +1,16 @@
 import Prompt from "@models/prompt";
 import { connectToDB } from "@utils/database";
+import { createSecureResponse } from "@utils/auth";
 
 export const GET = async (request) => {
     try {
-        await connectToDB()
+        await connectToDB();
 
-        const prompts = await Prompt.find({}).populate('creator')
+        const prompts = await Prompt.find({}).populate('creator');
 
-        return new Response(JSON.stringify(prompts), { status: 200 })
+        return createSecureResponse(prompts, 200);
     } catch (error) {
-        return new Response("Failed to fetch all prompts", { status: 500 })
+        console.error("Error fetching prompts:", error);
+        return createSecureResponse("Failed to fetch all prompts", 500);
     }
-} 
+}; 

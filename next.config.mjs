@@ -1,26 +1,62 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    // experimental: {
-      // appDir: true,
-      // serverComponentsExternalPackages: ["mongoose"],
-    // },
-    experimental: {
-      // This option allows you to opt-out of Server Components for pages that use `getServerSideProps` or `getInitialProps`
-      appDir: true,
-      // This option allows you to opt-out of Server Components for pages that use `getServerSideProps` or `getInitialProps`
-      // and instead render them as Static Site Generation (SSG) pages.
-      // serverComponentsExternalPackages: ["mongoose"],
-    },
-    images: {
-      domains: ['lh3.googleusercontent.com'],
-    },
-    webpack(config) {
-      config.experiments = {
-        ...config.experiments,
-        topLevelAwait: true,
-      }
-      return config
+  images: {
+    domains: ['lh3.googleusercontent.com'],
+  },
+  webpack(config) {
+    config.experiments = {
+      ...config.experiments,
+      topLevelAwait: true,
     }
-  }
-  
-  export default nextConfig
+    return config
+  },
+  // Security headers
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff'
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY'
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block'
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin'
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()'
+          }
+        ],
+      },
+      {
+        source: '/api/(.*)',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff'
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY'
+          },
+          {
+            key: 'Cache-Control',
+            value: 'no-store, no-cache, must-revalidate'
+          }
+        ],
+      },
+    ]
+  },
+}
+
+export default nextConfig

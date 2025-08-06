@@ -27,6 +27,12 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env.backup
+.env.production
+
+# Security: Never commit environment files with real credentials
+.env
+!.env.example
 
 # vercel
 .vercel
