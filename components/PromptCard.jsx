@@ -34,11 +34,12 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
           onClick={handleProfileClick}
         >
           <Image
-            src={post.creator.image}
+            src={post.creator.image || '/assets/images/default-user.png'}
             alt='user_image'
             width={40}
             height={40}
             className='rounded-full object-contain'
+            onError={(e) => { e.target.onerror = null; e.target.src = '/assets/images/default-user.png'; }}
           />
 
           <div className='flex flex-col'>

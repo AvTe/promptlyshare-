@@ -28,9 +28,14 @@ const handler = NextAuth({
 
         // if not, create a new document and save user in MongoDB
         if (!userExists) {
+          let username = profile.name.replace(" ", "").toLowerCase();
+          // Fallback: if username is too short, append random string
+          if (username.length < 8) {
+            username = username + Math.random().toString(36).substring(2, 10 - username.length);
+          }
           await User.create({
             email: profile.email,
-            username: profile.name.replace(" ", "").toLowerCase(),
+            username,
             image: profile.picture,
           });
         }
